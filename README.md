@@ -60,3 +60,9 @@ npm run test:e2e
 Build statyczny z względną bazą pod Pages: `npm run build` (wynik w `dist/`).
 
 Na `localhost` QR działa tylko na tym komputerze. Telefony na imprezie powinny otwierać opublikowany adres HTTPS.
+
+## Publikacja
+
+Workflow `.github/workflows/pages.yml` odpala testy, buduje `dist` i wgrywa go jako GitHub Pages. Źródło trzeba **raz** ustawić w repozytorium: Settings → Pages → Build and deployment → **GitHub Actions**. Bez tego `actions/configure-pages` kończy się błędem, a `https://krz4czy.github.io/kto-sciemnia/` odpowiada 404.
+
+Token użyty do pusha nie ma uprawnień `pages:write` i `administration:write`, więc włączenia Pages nie da się zrobić z tej sesji (`POST /repos/krz4czy/kto-sciemnia/pages` → 403 `Resource not accessible by integration`).
